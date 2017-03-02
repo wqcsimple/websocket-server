@@ -34,3 +34,4 @@ Temporary Items
 *.iml
 out
 gen
+node_modules

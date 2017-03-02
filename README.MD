@@ -2,7 +2,7 @@
 websocket 例子,通过ioredis， 加入了用户验证 (可设定推送给指定用户,或者推送给全部已经注册进来的用户)
 
 
-## useage
+## usage
 
 #### init
 

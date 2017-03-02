@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./node_modules/engine.io-client/engine.io.js"></script>
+</head>
+<body>
+
+<script>
+    var Message = {
+        Const: {
+            TYPE_LOGIN: 1,
+            TYPE_DATA: 2
+        },
+
+        create: function (type, data) {
+            return JSON.stringify({
+                type: type,
+                data: data,
+                time: parseInt(new Date().getTime() / 1000)
+            });
+        },
+
+        makeLoginMessage: function (token) {
+            return Message.create(Message.Const.TYPE_LOGIN, { token: token });
+        }
+    };
+
+    var socket = new eio.Socket('ws://localhost:33601', {path: '/whis-message'});
+    socket.on('open', function () {
+        socket.on('message', function (data) {
+            console.log(data);
+        });
+        socket.on('close', function () {
+            console.log('close');
+        });
+
+        socket.send(Message.makeLoginMessage("4439cc0f365eb3a1cd59519160badad6"));
+    })
+
+</script>
+
+</body>
+</html>

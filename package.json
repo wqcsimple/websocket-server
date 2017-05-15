@@ -11,7 +11,7 @@
   "dependencies": {
     "engine.io": "^2.0.2",
     "engine.io-client": "^2.0.2",
-    "ioredis": "^2.5.0",
+    "ioredis": "3.0.0-2",
     "locutus": "^2.0.8",
     "log4js": "^1.1.1",
     "q": "^1.4.1",

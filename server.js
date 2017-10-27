@@ -10,19 +10,8 @@ const Redis = require('ioredis');
 const Const = require('./lib/const');
 const Config = require('./lib/config');
 const Util = require('./lib/util');
+let Log = require('./lib/log');
 
-const log4js = require('log4js');
-
-//  日志配置
-log4js.configure({
-    appenders: [{
-        type: 'console',
-        layout: {
-            pattern: '[%r] [%p][%c] - %m%n'
-        }
-    }]
-});
-let Log = log4js.getLogger();
 
 let http = require('http').createServer().listen(Config.PORT);
 let server = engine.attach(http, {path: '/whis-message'});
@@ -152,7 +141,7 @@ let CoreSocket = {
             }
         }
 
-        if (socket.readyState != 'closing' && socket.readyState != 'closed') {
+        if (socket.readyState !== 'closing' && socket.readyState !== 'closed') {
             socket.close();
         }
 
@@ -179,7 +168,6 @@ let CoreSocket = {
     writeToAllUserSocket: (data) => {
           let socket_user_list = Context.user_socket_list;
           for (let user_key in socket_user_list) {
-
               CoreSocket.writeToUserSocket(user_key, data);
           }
     },

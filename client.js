@@ -6,25 +6,11 @@ const Redis = require('ioredis');
 const Const = require('./lib/const.js');
 const Config = require('./lib/config.js');
 const Util = require('./lib/util.js');
+const Log = require('./lib/log');
 
-let net = require('net');
-
-const log4js = require('log4js');
-
-//  日志配置
-log4js.configure({
-    appenders: [{
-        type: 'console',
-        layout: {
-            pattern: '[%r] [%p][%c] - %m%n'
-        }
-    }]
-});
-let Log = log4js.getLogger();
 
 let redis = new Redis(Config.REDIS_PORT, Config.REDIS_HOST);
 
-let sys = require("sys");
 let stdin = process.openStdin();
 
 stdin.addListener("data", (d) => {

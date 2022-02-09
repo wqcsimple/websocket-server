@@ -9,7 +9,7 @@
   "author": "whis <wqcsimple@foxmail.com> (http://whis.wang/)",
   "license": "ISC",
   "dependencies": {
-    "engine.io": "^3.3.2",
+    "engine.io": "^4.1.2",
     "engine.io-client": "^3.3.2",
     "ioredis": "4.9.0",
     "locutus": "^2.0.10",
